@@ -42,8 +42,6 @@ exports.getPagesForCategory = cmtitle => {
 
 }
 
-
-
 exports.getPageSections = pageId => {
   return axios.get(config.baseUri, {
     params: {

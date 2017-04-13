@@ -9,10 +9,17 @@
   "files": [
     "index.js"
   ],
-  "author": "",
+  "author": {
+    "name": "Forrest Desjardins",
+    "email": "desjardinsfg@gmail.com",
+    "url": "github.com/fdesjardins"
+  },
+  "engines": {
+    "node": ">=7"
+  },
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.15.3",
+    "axios": "^0.16.1",
     "cheerio": "^0.22.0"
   },
   "keywords": [
@@ -21,7 +28,8 @@
     "proverbs",
     "sayings",
     "excerpts",
-    "wikimedia"
+    "wikimedia",
+    "fortunes"
   ],
   "devDependencies": {
     "chai": "^3.5.0",

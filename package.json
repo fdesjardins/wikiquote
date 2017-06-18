@@ -1,6 +1,6 @@
 {
   "name": "wikiquote",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Promise-based interface for Wikiquote (https://en.wikiquote.org/wiki/Main_Page)",
   "main": "index.js",
   "scripts": {

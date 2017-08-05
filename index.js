@@ -31,11 +31,11 @@ exports.searchPeople = text => {
       format: 'json'
     }
   })
-  .then(results => {
-    const pages = results.data.query.search
-    // just return the top page for now
-    return pages[0]
-  })
+    .then(results => {
+      const pages = results.data.query.search
+      // just return the top page for now
+      return pages[0]
+    })
 }
 
 exports.getPagesForCategory = cmtitle => {
@@ -51,9 +51,9 @@ exports.getPageSections = pageId => {
       format: 'json'
     }
   })
-  .then(results => {
-    return results
-  })
+    .then(results => {
+      return results
+    })
 }
 
 exports.getSectionContent = (pageId, sectionIndex) => {
@@ -66,19 +66,19 @@ exports.getSectionContent = (pageId, sectionIndex) => {
       format: 'json'
     }
   })
-  .then(results => {
+    .then(results => {
     // console.log(results.data)
-    return cheerio.load(results.data.parse.text['*'])
-  })
-  .then($ => {
-    return $('ul > li').not('ul > li > ul > li').map((i, el) => {
-      const quoteSource = $(el).find('li').text()
-      return {
-        quote: $(el).text(),
-        source: quoteSource ? (quoteSource === '' ? null : quoteSource) : null
-      }
-    }).get()
-  })
+      return cheerio.load(results.data.parse.text['*'])
+    })
+    .then($ => {
+      return $('ul > li').not('ul > li > ul > li').map((i, el) => {
+        const quoteSource = $(el).find('li').text()
+        return {
+          quote: $(el).text(),
+          source: quoteSource ? (quoteSource === '' ? null : quoteSource) : null
+        }
+      }).get()
+    })
 }
 
 exports.list = pageId => exports.getSectionContent(pageId, 1)

@@ -5,11 +5,31 @@
 
 Some handy methods for Wikiquote
 
-- `searchByTitle`
-- `searchPeople`
-- `getPageSections`
-- `getSectionContent`
-- `getRandomQuote`
+## Installation
+
+```sh
+npm install --save wikiquote
+```
+
+## Usage
+
+- `searchByTitle(query)`
+- `searchPeople(query)`
+- `getPageSections(pageId)`
+- `getSectionContent(pageId, sectionIndex)`
+- `getRandomQuote(pageId)`
+
+### Getting a Page ID
+
+You can use the URL for the page you want to pull a quote from. For example, for https://en.wikiquote.org/wiki/Steve_Jobs you can use `Steve_Jobs` or `Steve Jobs` for the `pageId` argument.
+
+Another way is to use the searchPeople method:
+
+```js
+wikiquote.searchPeople('steve jobs')
+  .then(page => wikiquote.getRandomQuote(page.title))
+  .then(quote => console.log(quote))
+```
 
 ## Todo / Eventual API
 

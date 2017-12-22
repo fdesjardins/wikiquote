@@ -1,6 +1,7 @@
 # Wikiquote
 
 [![Build Status][travis-image]][travis-url]
+[![NPM Version][npm-image]][npm-url]
 [![Coverage][coveralls-image]][coveralls-url]
 
 Some handy methods for Wikiquote
@@ -53,6 +54,8 @@ wikiquote.searchPeople('steve jobs')
 
 MIT © [Forrest Desjardins](https://github.com/fdesjardins)
 
+[npm-url]: https://www.npmjs.com/package/wikiquote
+[npm-image]: https://img.shields.io/npm/v/wikiquote.svg?style=flat
 [travis-url]: https://travis-ci.org/fdesjardins/wikiquote
 [travis-image]: https://img.shields.io/travis/fdesjardins/wikiquote.svg?style=flat
 [coveralls-url]: https://coveralls.io/r/fdesjardins/wikiquote

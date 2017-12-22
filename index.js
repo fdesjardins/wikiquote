@@ -1,84 +1,37 @@
-const axios = require('axios')
+const superagent = require('superagent')
 const cheerio = require('cheerio')
 
 const config = {
   baseUri: 'https://en.wikiquote.org/w/api.php'
 }
 
-exports.getCategories = () => {
-  return 1
+exports.searchByTitle = async (text) => {
+  const res = await superagent.get(`${config.baseUri}?srsearch=${text}&action=query&list=search&srwhat=nearmatch&format=json`)
+  return res.body.query.search
 }
 
-exports.searchByTitle = text => {
-  return axios.get(config.baseUri, {
-    params: {
-      action: 'query',
-      list: 'search',
-      srsearch: text,
-      srwhat: 'nearmatch',
-      format: 'json'
+exports.searchPeople = async (text) => {
+  const res = await superagent.get(`${config.baseUri}?srsearch=${text}&action=query&list=search&srwhat=nearmatch&format=json`)
+  return res.body.query.search[0]
+}
+
+exports.getPageSections = async (pageId) => {
+  const res = await superagent.get(`${config.baseUri}?page=${pageId}&action=parse&prop=sections&format=json`)
+  return res.body.parse
+}
+
+exports.getSectionContent = async (pageId, sectionIndex) => {
+  const res = await superagent.get(`${config.baseUri}?page=${pageId}&section=${sectionIndex}&action=parse&prop=text&format=json`)
+
+  const $ = cheerio.load(res.body.parse.text['*'])
+
+  return $('ul > li').not('ul > li > ul > li').map((i, el) => {
+    const quoteSource = $(el).find('li').text()
+    return {
+      quote: $(el).text(),
+      source: quoteSource ? (quoteSource === '' ? null : quoteSource) : null
     }
-  })
-}
-
-exports.searchPeople = text => {
-  return axios.get(config.baseUri, {
-    params: {
-      action: 'query',
-      list: 'search',
-      srsearch: text,
-      srwhat: 'nearmatch',
-      format: 'json'
-    }
-  })
-    .then(results => {
-      const pages = results.data.query.search
-      // just return the top page for now
-      return pages[0]
-    })
-}
-
-exports.getPagesForCategory = cmtitle => {
-
-}
-
-exports.getPageSections = pageId => {
-  return axios.get(config.baseUri, {
-    params: {
-      action: 'parse',
-      page: pageId,
-      prop: 'sections',
-      format: 'json'
-    }
-  })
-    .then(results => {
-      return results
-    })
-}
-
-exports.getSectionContent = (pageId, sectionIndex) => {
-  return axios.get(config.baseUri, {
-    params: {
-      action: 'parse',
-      page: pageId,
-      section: sectionIndex,
-      prop: 'text',
-      format: 'json'
-    }
-  })
-    .then(results => {
-    // console.log(results.data)
-      return cheerio.load(results.data.parse.text['*'])
-    })
-    .then($ => {
-      return $('ul > li').not('ul > li > ul > li').map((i, el) => {
-        const quoteSource = $(el).find('li').text()
-        return {
-          quote: $(el).text(),
-          source: quoteSource ? (quoteSource === '' ? null : quoteSource) : null
-        }
-      }).get()
-    })
+  }).get()
 }
 
 exports.list = pageId => exports.getSectionContent(pageId, 1)

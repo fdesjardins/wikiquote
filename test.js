@@ -21,4 +21,19 @@ describe('wikiquote', () => {
         assert(quote.length > 0)
       })
   })
+
+  it('should search by title', () => {
+    return wikiquote.searchByTitle('Steve Jobs')
+      .then(page => {
+        assert(page[0].title === 'Steve Jobs')
+      })
+  })
+
+  it('should get page sections', () => {
+    return wikiquote.getPageSections('Steve Jobs')
+      .then(sections => {
+        assert(sections.title === 'Steve Jobs')
+        assert(sections.sections.length > 0)
+      })
+  })
 })

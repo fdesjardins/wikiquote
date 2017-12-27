@@ -10,8 +10,8 @@ describe('wikiquote', () => {
 
   it('should search for people', () => {
     return wikiquote.searchPeople('steve jobs')
-      .then(page => {
-        assert(page.title === 'Steve Jobs')
+      .then(pages => {
+        assert(pages[0].title === 'Steve Jobs')
       })
   })
 
@@ -34,6 +34,13 @@ describe('wikiquote', () => {
       .then(sections => {
         assert(sections.title === 'Steve Jobs')
         assert(sections.sections.length > 0)
+      })
+  })
+
+  it('should search wikiquote', () => {
+    return wikiquote.search('Classical economics')
+      .then(results => {
+        assert(results[0].title === 'Classical economics')
       })
   })
 })

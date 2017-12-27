@@ -12,17 +12,65 @@ Some handy methods for Wikiquote
 npm install --save wikiquote
 ```
 
-## Usage
+## API
 
-- `searchByTitle(query)`
-- `searchPeople(query)`
-- `getPageSections(pageId)`
-- `getSectionContent(pageId, sectionIndex)`
-- `getRandomQuote(pageId)`
+### `search(query)`
 
-### Getting a Page ID
+#### `query`
 
-You can use the URL for the page you want to pull a quote from. For example, for https://en.wikiquote.org/wiki/Steve_Jobs you can use `Steve_Jobs` or `Steve Jobs` for the `pageId` argument.
+The search terms used to query wikiquote
+
+Type: `string`
+
+Examples:
+
+- Person Name
+- Book Title
+- Movie Title
+
+### `searchByTitle(query)`
+
+#### `query`
+
+The search terms used to query page titles
+
+Type: `string`
+
+### `searchPeople(query)`
+
+#### `query`
+
+The search terms used to query people
+
+Type: `string`
+
+### `getPageSections(pageTitle)`
+
+### `pageTitle`
+
+The title of the wikiquote page
+
+Type: `string`
+
+### `getSectionContent(pageTitle, sectionIndex)`
+
+### `pageTitle`
+
+The title of the wikiquote page
+
+Type: `string`
+
+### `getRandomQuote(pageTitle)`
+
+### `pageTitle`
+
+The title of the wikiquote page
+
+Type: `string`
+
+### Getting a Page Title
+
+You can use the URL for the page you want to pull a quote from. For example, for https://en.wikiquote.org/wiki/Steve_Jobs you can use `Steve_Jobs` or `Steve Jobs` for the `pageTitle` argument.
 
 Another way is to use the searchPeople method:
 
@@ -31,24 +79,6 @@ wikiquote.searchPeople('steve jobs')
   .then(page => wikiquote.getRandomQuote(page.title))
   .then(quote => console.log(quote))
 ```
-
-## Todo / Eventual API
-
-- /random
-- /:pageId
-- /categories
-- /people
-- /qotd
-- /search
-- /themes
-- /films
-- /proverbs
-- /places
-
-## Wish List
-
-- date range
-- local cache
 
 ## License
 

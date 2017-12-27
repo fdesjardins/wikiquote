@@ -18,9 +18,6 @@
     "wikimedia",
     "fortunes"
   ],
-  "files": [
-    "index.js"
-  ],
   "engines": {
     "node": ">=7"
   },

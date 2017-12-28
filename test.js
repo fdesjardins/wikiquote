@@ -43,4 +43,11 @@ describe('wikiquote', () => {
         assert(results[0].title === 'Classical economics')
       })
   })
+
+  it('should list quotes given a page title', () => {
+    return wikiquote.list('Adam Smith')
+      .then(results => {
+        assert(results.length > 0)
+      })
+  })
 })

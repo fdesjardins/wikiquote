@@ -1,6 +1,6 @@
 {
   "name": "wikiquote",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "license": "MIT",
   "description": "Promise-based interface for Wikiquote (https://en.wikiquote.org/wiki/Main_Page)",
   "repository": "fdesjardins/wikiquote",

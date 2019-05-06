@@ -1,45 +1,46 @@
 {
   "name": "wikiquote",
-  "version": "0.4.6",
-  "license": "MIT",
   "description": "Promise-based interface for Wikiquote (https://en.wikiquote.org/wiki/Main_Page)",
-  "repository": "fdesjardins/wikiquote",
+  "version": "0.4.6",
   "author": {
     "name": "Forrest Desjardins",
     "email": "desjardinsfg@gmail.com",
     "url": "github.com/fdesjardins"
   },
-  "keywords": [
-    "quotes",
-    "wikiquote",
-    "proverbs",
-    "sayings",
-    "excerpts",
-    "wikimedia",
-    "fortunes"
-  ],
-  "engines": {
-    "node": ">=7"
-  },
-  "main": "index.js",
-  "scripts": {
-    "test": "standard *.js && nyc mocha test.js"
-  },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "superagent": "^4.1.0"
+    "superagent": "^5.0.5"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "coveralls": "^3.0.3",
-    "mocha": "^6.0.1",
-    "nyc": "^13.3.0",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.0",
     "standard": "^12.0.1"
   },
+  "engines": {
+    "node": ">=7"
+  },
+  "homepage": "https://github.com/fdesjardins/wikiquote",
+  "keywords": [
+    "excerpts",
+    "fortunes",
+    "proverbs",
+    "quotes",
+    "sayings",
+    "wikimedia",
+    "wikiquote"
+  ],
+  "license": "MIT",
+  "main": "index.js",
   "nyc": {
     "reporter": [
       "lcov",
       "text"
     ]
+  },
+  "repository": "fdesjardins/wikiquote",
+  "scripts": {
+    "test": "standard *.js && nyc mocha test.js"
   }
 }

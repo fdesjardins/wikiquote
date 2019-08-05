@@ -1,7 +1,7 @@
 {
   "name": "wikiquote",
   "description": "Promise-based interface for Wikiquote (https://en.wikiquote.org/wiki/Main_Page)",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "author": {
     "name": "Forrest Desjardins",
     "email": "desjardinsfg@gmail.com",

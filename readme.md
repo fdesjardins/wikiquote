@@ -11,10 +11,12 @@ Some handy methods for Wikiquote
 ```sh
 npm install --save wikiquote
 ```
+
 ### Usage
 
 ```js
-wikiquote.searchPeople('steve jobs')
+wikiquote
+  .searchPeople('steve jobs')
   .then(page => wikiquote.getRandomQuote(page.title))
   .then(quote => console.log(quote))
 ```
@@ -34,7 +36,7 @@ As quoted in Steve Jobs (2011) by Walter Isaacson, p. 570
 
 ## API
 
-### `search(query)`
+### `search(query, options)`
 
 #### `query`
 
@@ -48,7 +50,7 @@ Examples:
 - Book Title
 - Movie Title
 
-### `searchByTitle(query)`
+### `searchByTitle(query, options)`
 
 #### `query`
 
@@ -56,7 +58,7 @@ The search terms used to query page titles
 
 Type: `string`
 
-### `searchPeople(query)`
+### `searchPeople(query, options)`
 
 #### `query`
 
@@ -64,7 +66,7 @@ The search terms used to query people
 
 Type: `string`
 
-### `getPageSections(pageTitle)`
+### `getPageSections(pageTitle, options)`
 
 #### `pageTitle`
 
@@ -72,7 +74,7 @@ The title of the wikiquote page
 
 Type: `string`
 
-### `getSectionContent(pageTitle, sectionIndex)`
+### `getSectionContent(pageTitle, sectionIndex, options)`
 
 #### `pageTitle`
 
@@ -80,7 +82,7 @@ The title of the wikiquote page
 
 Type: `string`
 
-### `getRandomQuote(pageTitle)`
+### `getRandomQuote(pageTitle, options)`
 
 #### `pageTitle`
 
@@ -88,13 +90,33 @@ The title of the wikiquote page
 
 Type: `string`
 
-### `list(pageTitle)`
+### `list(pageTitle, options)`
 
 List all the quotes on a given page
 
 Type: `string`
 
-###
+## `options`
+
+You can also provide a set of options to each method to customize the query and results.
+
+Type: `object`
+
+Example:
+
+```js
+{
+  language: 'en'
+}
+```
+
+### `options.language`
+
+The language code to search with
+
+Type: `string`
+
+For a list of available language codes see https://meta.wikimedia.org/wiki/Wikiquote#List_of_Wikiquotes
 
 ## License
 
